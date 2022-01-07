@@ -2,7 +2,7 @@
 import { ReactComponent as LogImage } from '../../assets/images/logomedio.svg';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button } from "../PrimaryButton/styles";
+import { Button } from "../../components/PrimaryButton/styles";
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 
