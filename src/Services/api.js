@@ -5,4 +5,9 @@ const api = axios.create({
   
 })
 
+// const api = axios.create({
+//     baseURL: "http://169.57.150.59:8002"
+  
+// })
+
 export default api;

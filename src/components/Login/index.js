@@ -33,9 +33,13 @@ headers:{
  result =await result.text();
   console.warn( result);
 
-  localStorage.setItem('usuario',JSON.stringify(result));alert("Bem vindo a Tic Social.");
+  localStorage.setItem('usuario',JSON.stringify(result));
+  if (result){
+    history.push("/home");alert("Bem vindo a Tic Social.");
+  }else{
+    history.push("/");alert("Usuario ou senha incorretos");
+  }
   
-  history.push("/home");
   }
     
   
