@@ -39,7 +39,7 @@ function AcessarCadastro() {
                             <Link to={"/ListarFuncionarios"}>
                                 <Button
                                     className="btnCadastro"
-                                    type="submit">Historico
+                                    type="submit">Listar funcionarios
                                 </Button>
                             </Link>
 

@@ -18,7 +18,9 @@ import { useState } from "react";
 import api from "../../Services/api";
 
 
-const theme = createTheme();
+const theme = createTheme({
+  color: `azul`
+});
 
 function Cadastro() {
 
@@ -101,7 +103,9 @@ function Cadastro() {
 
   async function handleSubmitOnRegister() {
     console.log('Usuario', usuario);
-    await api.post("/salvar", usuario)(alert("Usuario Cadastrado com sucesso!"))
+    await api.post("/salvar", usuario);
+    alert("Usuario Cadastrado com sucesso!");
+
   }
 
 

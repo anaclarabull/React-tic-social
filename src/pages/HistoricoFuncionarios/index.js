@@ -8,56 +8,31 @@ import { Button } from "../../components/PrimaryButton/styles";
 
 
 function Funcionarios() {
-    // const [newRepo, setNewRepo] = useState("");
     const [usuario, setUsuario] = useState([]);
+    const [search, setSearch] = useState('');
 
-   
-
-    // useEffect(() => {
-        
+    useEffect(() => {
         async function fetchData() {
+            const result = await api.get(`/api/v1/usuario/listarTodos`);
 
-
-           const token = await api.get(`/api/v1/usuario/listarTodos`);
-            api.interceptors.request.use(
-                async (config) => {
-                  if (token) {
-                    config.headers.Authorization = `Bearer ${token}`;
-                  }
-                  return config;
-                },
-                (e) => {
-                  return Promise.reject(e);
-                }
-              );
-           
-           setUsuario(token.data);
-            console.log(token.data);
+            setUsuario(result.data);
         }
     
         fetchData();
+    }, []);
 
-        console.log(usuario);
-        
-    // });
-
-    // function deletarUsuario(e) {
-    //     e.preventDefault();
-    //    var response = api.delete(`/usuario/${e}`);
-    //    alert(response);
-
-    // }
 
     return (
         <div className="bg">
-            <div className="login-container">
+            <div >
 
 <div className="base-card login-card">
   <div className="loginForm">
     <div className="user-login">
 <>
         <div style={{display: "flex",flexDirection: "column", alignItems:"center"}}> 
-         <LogImage/></div>
+            <LogImage/>
+        </div>
         <div style={{display: "flex",
             justifyContent: "rigth",
             flexDirection: "column", alignItems:"center"}}>
@@ -68,85 +43,69 @@ function Funcionarios() {
 
 
         <div>
-                  <label htmlFor="user">Insira a matricula</label>
-                  <input
-                    id="user"
-                    type="text"
-                    name="user"
-                    
-                    placeholder="Numero da matricula"
                  
-                  />
-                  
-                </div>
+               
 
-                <Link to={"/ListaFuncionario"}>
-                                <Button
-                                    className="btnCadastro"
-                                    type="submit">Buscar
-                                </Button>
-                            </Link>
+               
 
             {
         usuario.map(user => { 
-        
-           
                 return (
-                    <div  >
+                    <div key={user.id}>
                         {/* <Link to={`usuarios/${usuario?.id_usuario}`}> */}
-                            <div id="formulario">
-                                <p>Nome: <strong>{user?.nome}</strong></p>
-                                <p>Id_usuario: {user?.id}</p>
-                                <p>Login: {user?.login}</p>
-                                <p>Data de nascimento: {user?.dataNasc}</p>
-                                <p>Sexo: {user?.sexo}</p>
-                                <p>Estado civil: {user?.estadoCivil}</p>
-                                <p>Saudação: {user?.saudacao}</p>
-                                <p>Nacionalidade: {user?.nacionalidade}</p>
-                                <p>Naturalidade: {user?.naturalidade}</p>
-                                <p>Nome do pai: {user?.nomePai}</p>
-                                <p>Nome da mãe: {user?.nomeMae}</p>
-                                <p>PNE: {user?.PNE}</p>
-                                <p>Data de admissão: {user?.dataAdmissao}</p>
-                                <p>Data de demissão: {user?.dataDemissao}</p>
-                                <p>Motivo demissão: {user?.motivoDemissao}</p>
-                                <p>Cep: {user?.cep}</p>
-                                <p>Numero: {user?.numero}</p>
-                                <p>Logradouro: {user?.logradouro}</p>
-                                <p>Bairro: {user?.bairro}</p>
-                                <p>Cidade: {user?.cidade}</p>
-                                <p>Telefone: {user?.telefone}</p>
-                                <p>Celular: {user?.celular}</p>
-                                <p>Telefone emergencial: {user?.telefoneEmergencia}</p>
-                                <p>Email empresarial: {user?.emailEmpresarial}</p>
-                                <p>Email pessoal: {user?.emailPessoal}</p>
-                                <p>Cargo: {user?.cargo}</p>
-                                <p>Salario: {user?.salario}</p>
-                                <p>Turno: {user?.turno}</p>
-                                <p>Tipo de contrato: {user?.tipoContrato}</p>
-                                <p>Data do contrato: {user?.dataContrato}</p>
-                                <p>Escolaridade: {user?.escolaridade}</p>
-                                <p>Superior direto: {user?.superiorDireto}</p>
-                                <p>Email do superior direto: {user?.emailSuperiorDireto}</p>
-                                <p>Grau hierarquico: {user?.grauHierarquico}</p>
-                                <p>Duração do contrato: {user?.duracaoContrato}</p>
-                                <p>Vencimento do contrato: {user?.vencimentoContrato}</p>
-                                <p>Departamento: {user?.departamento}</p>
-                                <p>CPF: {user?.cpf}</p>
-                                <p>RG: {user?.rg}</p>
-                                <p>Titulo de eleitor: {user?.tituloEleitoral}</p>
-                                <p>Zona eleitoral: {user?.zonaEleitoral}</p>
-                                <p>Seção eleitoral: {user?.secaoEleitoral}</p>
-                                <p>CPTS numero: {user?.cptsNumero}</p>
-                                <p>CPTS serie: {user?.cptsSerie}</p>
-                                <p>Reservista: {user?.reservista}</p>
-                                <p>CNH: {user?.cnh}</p>
-                                <p>Banco: {user?.banco}</p>
-                                <p>Agencia: {user?.agencia}</p>
-                                <p>Conta corrente: {user?.contaCorrente}</p>
-                                <p>PIS: {user?.pis}</p>
-                                <p>Password: {user?.password}</p>
-                                <p>Valor da recissão: {user?.valorRecissao}</p>
+                            <div >
+                                <h2>Nome: <strong>{user?.nome}</strong></h2>
+                                <h2>Id_usuario: {user?.id}</h2>
+                                <h2>Login: {user?.login}</h2>
+                                <h2>Data de nascimento: {user?.dataNasc}</h2>
+                                <h2>Sexo: {user?.sexo}</h2>
+                                <h2>Estado civil: {user?.estadoCivil}</h2>
+                                <h2>Saudação: {user?.saudacao}</h2>
+                                <h2>Nacionalidade: {user?.nacionalidade}</h2>
+                                <h2>Naturalidade: {user?.naturalidade}</h2>
+                                <h2>Nome do h2ai: {user?.nomeh2ai}</h2>
+                                <h2>Nome da mãe: {user?.nomeMae}</h2>
+                                <h2>h2NE: {user?.h2NE}</h2>
+                                <h2>Data de admissão: {user?.dataAdmissao}</h2>
+                                <h2>Data de demissão: {user?.dataDemissao}</h2>
+                                <h2>Motivo demissão: {user?.motivoDemissao}</h2>
+                                <h2>Ceh2: {user?.ceh2}</h2>
+                                <h2>Numero: {user?.numero}</h2>
+                                <h2>Logradouro: {user?.logradouro}</h2>
+                                <h2>Bairro: {user?.bairro}</h2>
+                                <h2>Cidade: {user?.cidade}</h2>
+                                <h2>Telefone: {user?.telefone}</h2>
+                                <h2>Celular: {user?.celular}</h2>
+                                <h2>Telefone emergencial: {user?.telefoneEmergencia}</h2>
+                                <h2>Email emh2resarial: {user?.emailEmh2resarial}</h2>
+                                <h2>Email h2essoal: {user?.emailh2essoal}</h2>
+                                <h2>Cargo: {user?.cargo}</h2>
+                                <h2>Salario: {user?.salario}</h2>
+                                <h2>Turno: {user?.turno}</h2>
+                                <h2>Tih2o de contrato: {user?.tih2oContrato}</h2>
+                                <h2>Data do contrato: {user?.dataContrato}</h2>
+                                <h2>Escolaridade: {user?.escolaridade}</h2>
+                                <h2>Suh2erior direto: {user?.suh2eriorDireto}</h2>
+                                <h2>Email do suh2erior direto: {user?.emailSuh2eriorDireto}</h2>
+                                <h2>Grau hierarquico: {user?.grauHierarquico}</h2>
+                                <h2>Duração do contrato: {user?.duracaoContrato}</h2>
+                                <h2>Vencimento do contrato: {user?.vencimentoContrato}</h2>
+                                <h2>Deh2artamento: {user?.deh2artamento}</h2>
+                                <h2>Ch2F: {user?.ch2f}</h2>
+                                <h2>RG: {user?.rg}</h2>
+                                <h2>Titulo de eleitor: {user?.tituloEleitoral}</h2>
+                                <h2>Zona eleitoral: {user?.zonaEleitoral}</h2>
+                                <h2>Seção eleitoral: {user?.secaoEleitoral}</h2>
+                                <h2>Ch2TS numero: {user?.ch2tsNumero}</h2>
+                                <h2>Ch2TS serie: {user?.ch2tsSerie}</h2>
+                                <h2>Reservista: {user?.reservista}</h2>
+                                <h2>CNH: {user?.cnh}</h2>
+                                <h2>Banco: {user?.banco}</h2>
+                                <h2>Agencia: {user?.agencia}</h2>
+                                <h2>Conta corrente: {user?.contaCorrente}</h2>
+                                <h2>h2IS: {user?.h2is}</h2>
+                                <h2>h2assword: {user?.h2assword}</h2>
+                                <h2>Valor da recissão: {user?.valorRecissao}</h2>
                                 <h1>---------------------------------------------------------------------------</h1>
                                 {/* <button style={{backgroundColor: "#FF4500"}} 
                                     class="btnCRUD" type="button" value={cliente?.id_cliente} id={`btnDeletar${cliente?.id_cliente}`} 
@@ -170,13 +129,14 @@ function Funcionarios() {
     <h3 style={{color:"black"}}>Voltar</h3> 
     </Link>
     </div>
-   
+    </div>
     </>
     </div>
     </div>
       </div>
     </div>
     </div>
+   
     );
 }
 

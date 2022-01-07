@@ -1,61 +1,49 @@
-
-import { ReactComponent as LogImage } from '../../assets/images/logomedio.svg';
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { ReactComponent as LogImage } from "../../assets/images/logomedio.svg";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Button } from "../../components/PrimaryButton/styles";
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
 
-import "./login.scss"
+import "./login.scss";
 
+const Login = () => {
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
 
+  const collectData = async () => {
+    console.warn(login, password);
+    let result = await fetch("http://api-v1-ticsocial.herokuapp.com/login", {
+      method: "post",
+      body: JSON.stringify({ login, password }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer my-token",
+      },
+    });
+    result = await result.text();
 
-
-
-
-
-const Login =() =>{
-const[login, setLogin] =useState('');
-const[password, setPassword] =useState('');
-const history = useHistory();
-
-const collectData=async()=>{
-  console.warn(login, password);
- let result = await fetch('http://api-v1-ticsocial.herokuapp.com/login',{
-method: "post",
-body:JSON.stringify({login,password}),
-headers:{
-  'Content-Type':'application/json',
-  'Authorization': 'Bearer my-token',
- 
-},
-  });
- result =await result.text();
-  console.warn( result);
-
-  localStorage.setItem('usuario',JSON.stringify(result));
-  if (result){
-    history.push("/home");alert("Bem vindo a Tic Social.");
-  }else{
-    history.push("/");alert("Usuario ou senha incorretos");
-  }
-  
-  }
-    
-  
-
+    localStorage.setItem("usuario", result);
+    if (result) {
+      history.push("/home");
+      alert("Bem vindo a Tic Social.");
+    } else {
+      history.push("/");
+      alert("Usuario ou senha incorretos");
+    }
+  };
 
   return (
     <div className="bg">
       <div className="login-container">
-
         <div className="base-card login-card">
           <div className="loginForm">
             <div className="user-login">
               <LogImage />
               <h1>Acessar o Sistema</h1>
 
-              <form >
+              <form>
                 <div>
                   <label htmlFor="user">Usuário</label>
                   <input
@@ -63,7 +51,9 @@ headers:{
                     type="text"
                     name="user"
                     value={login}
-                    onChange={(e) => { setLogin(e.target.value) }}
+                    onChange={(e) => {
+                      setLogin(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="user-login__form-control">
@@ -73,11 +63,11 @@ headers:{
                     type="password"
                     name="password"
                     value={password}
-                    onChange={(e) => { setPassword(e.target.value) }}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
                   />
                 </div>
-             
-
 
                 <Button
                   onClick={collectData}
@@ -88,12 +78,11 @@ headers:{
                 >
                   ENTRAR
                 </Button>
-                <Grid item className='forgot'>
+                <Grid item className="forgot">
                   <Link href={"/recuperarSenha"} variant="body2">
                     <h4>Esqueceu sua senha?</h4>
                   </Link>
                 </Grid>
-
               </form>
             </div>
           </div>
@@ -101,14 +90,6 @@ headers:{
       </div>
     </div>
   );
-  
-}
-
-  
-
-    
-
- 
-
+};
 
 export default Login;
