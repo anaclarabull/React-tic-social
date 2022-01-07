@@ -124,7 +124,7 @@ function Cadastro() {
                 </Typography>
                 <Box component="form" noValidate sx={{ mt: 3 }}>
 
-                  <form >
+                  
 
                     <Grid container spacing={2}>
 
@@ -735,7 +735,7 @@ function Cadastro() {
                         </Grid>
                       </Grid>
                     </Grid>
-                  </form>
+                 
                 </Box>
               </Box>
             </Container>

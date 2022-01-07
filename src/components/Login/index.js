@@ -86,7 +86,7 @@ headers:{
                 </Button>
                 <Grid item className='forgot'>
                   <Link href={"/recuperarSenha"} variant="body2">
-                    <h4>Esqueceu a senha?</h4>
+                    <h4>Esqueceu sua senha?</h4>
                   </Link>
                 </Grid>
 

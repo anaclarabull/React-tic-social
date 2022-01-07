@@ -16,7 +16,6 @@ function Routes() {
     <BrowserRouter>
   
       <Switch  >
-       
         <Route path="/" exact component={Login} />
         <Route path="/home" exact component={Home} />
         <Route path="/cadastro" exact component={Cadastro} />

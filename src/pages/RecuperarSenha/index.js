@@ -39,7 +39,7 @@ function RecuperarSenha() {
               </Link>
 
               <Link style={{ textDecoration: "none", marginBottom: "50px" }} to={"/"}>
-                <spam>Voltar</spam>
+              <h4 style={{color:"black"}}>Voltar</h4>
               </Link>
 
 

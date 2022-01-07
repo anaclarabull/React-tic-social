@@ -8,6 +8,7 @@ import "./index.scss";
 function Funcionarios() {
     // const [newRepo, setNewRepo] = useState("");
     const [usuario, setUsuario] = useState([]);
+
    
 
     // useEffect(() => {
@@ -15,7 +16,7 @@ function Funcionarios() {
         async function fetchData() {
 
 
-            const token = await api.get(`/api/v1/usuario/listarTodos`);
+           const token = await api.get(`/api/v1/usuario/listarTodos`);
             api.interceptors.request.use(
                 async (config) => {
                   if (token) {
