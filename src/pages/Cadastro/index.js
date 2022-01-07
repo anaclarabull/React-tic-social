@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import "./cadastro.scss"
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+import {Button, Header} from "../../components/PrimaryButton/styles";
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -17,10 +17,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
 import api from "../../Services/api";
 
-
-const theme = createTheme({
-  color: `azul`
-});
+const theme = createTheme();
 
 function Cadastro() {
 
@@ -103,15 +100,14 @@ function Cadastro() {
 
   async function handleSubmitOnRegister() {
     console.log('Usuario', usuario);
-    await api.post("/salvar", usuario);
-    alert("Usuario Cadastrado com sucesso!");
-
+    await api.post("/salvar", usuario)(alert("Usuario Cadastrado com sucesso!"))
   }
 
 
   return (
     <div className="bg-cadastro">
-      <div className="home-container">
+      <Header/>
+      <div className="login-container">
         <div className="base-card home-card">
           <ThemeProvider theme={theme}>
             <Container component="main">
@@ -129,7 +125,7 @@ function Cadastro() {
                 </Typography>
                 <Box component="form" noValidate sx={{ mt: 3 }}>
 
-                  
+                  <form >
 
                     <Grid container spacing={2}>
 
@@ -723,15 +719,15 @@ function Cadastro() {
                         />
                       </Grid>
 
-                      <Button
+                      <button
                         type="submit"
                         fullWidth
                         variant="contained"
                         onClick={() => handleSubmitOnRegister()}
-                        sx={{ mt: 3, mb: 4 }}
+                        className="user-login__submit-button-entrar"
                       >
                         CADASTRAR
-                      </Button>
+                      </button>
                       <Grid container justifyContent="flex-end" marginBottom="3%">
                         <Grid item>
                           <Link href="/" variant="body2" >
@@ -739,7 +735,6 @@ function Cadastro() {
                           </Link>
                         </Grid>
                       </Grid>
-
                       <Grid container justifyContent="flex-end" marginBottom="3%">
                         <Grid item>
                           <Link href="/home" variant="body2" >
@@ -748,15 +743,12 @@ function Cadastro() {
                         </Grid>
                       </Grid>
 
-
                     </Grid>
-                  
-
+                  </form>
                 </Box>
               </Box>
             </Container>
           </ThemeProvider>
-
         </div>
       </div>
     </div>

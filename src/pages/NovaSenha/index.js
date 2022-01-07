@@ -43,9 +43,9 @@ function NovaSenha() {
 
 
               <Link to={"/"}>
-                <Button className="user-login__submit-button" style={{ width: "120px", margin: "50px", padding: "5%" }} type="submit">
+                <button className="user-login__submit-button" style={{ width: "120px", margin: "50px", padding: "5%" }} type="submit">
                   ATUALIZAR
-                </Button>
+                </button>
               </Link>
 
               <Link style={{ textDecoration: "none", marginBottom: "50px" }} to={"/recuperarSenha"}>

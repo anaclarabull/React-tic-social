@@ -69,7 +69,7 @@ const Login = () => {
                   />
                 </div>
 
-                <Button
+                <button
                   onClick={collectData}
                   theme="contained-green"
                   className="user-login__submit-button"
@@ -77,7 +77,7 @@ const Login = () => {
                   type="button"
                 >
                   ENTRAR
-                </Button>
+                </button>
                 <Grid item className="forgot">
                   <Link href={"/recuperarSenha"} variant="body2">
                     <h4>Esqueceu sua senha?</h4>

@@ -50,6 +50,10 @@
     border: none;
     font-weight: bold;
     align-items: center;
+
+    &:hover {
+      background-color: #3C70C9;
+  }
   }
   
 .forgot{
