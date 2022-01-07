@@ -4,6 +4,8 @@ import { ReactComponent as LogImage } from '../../assets/images/logomedio.svg';
 import api from "../../Services/api";
 import "./index.scss";
 
+import { Button } from "../../components/PrimaryButton/styles";
+
 
 function Funcionarios() {
     // const [newRepo, setNewRepo] = useState("");
@@ -47,6 +49,12 @@ function Funcionarios() {
     // }
 
     return (
+        <div className="bg">
+            <div className="login-container">
+
+<div className="base-card login-card">
+  <div className="loginForm">
+    <div className="user-login">
 <>
         <div style={{display: "flex",flexDirection: "column", alignItems:"center"}}> 
          <LogImage/></div>
@@ -56,7 +64,29 @@ function Funcionarios() {
        
       
        
-        <h1>Lista de Funcionários</h1>
+        <h1>Historico de usuarios</h1>
+
+
+        <div>
+                  <label htmlFor="user">Insira a matricula</label>
+                  <input
+                    id="user"
+                    type="text"
+                    name="user"
+                    
+                    placeholder="Numero da matricula"
+                 
+                  />
+                  
+                </div>
+
+                <Link to={"/ListaFuncionario"}>
+                                <Button
+                                    className="btnCadastro"
+                                    type="submit">Buscar
+                                </Button>
+                            </Link>
+
             {
         usuario.map(user => { 
         
@@ -139,9 +169,14 @@ function Funcionarios() {
    <Link style={{margin:"50px" , textDecoration:"none"}} to={"/home"}>
     <h3 style={{color:"black"}}>Voltar</h3> 
     </Link>
-    </div> 
+    </div>
+   
     </>
-    
+    </div>
+    </div>
+      </div>
+    </div>
+    </div>
     );
 }
 

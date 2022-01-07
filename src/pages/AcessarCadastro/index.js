@@ -4,9 +4,9 @@ import { ReactComponent as LogImage } from '../../assets/images/logomedio.svg';
 
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
-import "./home.scss"
+import "./index.scss"
 
-function Home() {
+function AcessarCadastro() {
     return (
 
 
@@ -23,15 +23,23 @@ function Home() {
                            
 
                             <div className="title">
-                                <h1>Bem vindo a Tic Social.</h1>
+                                <h1>Cadastro </h1>
                             </div>
 
                           
 
-                            <Link to={"/AcessarCadastro"}>
+                            <Link to={"/cadastro"}>
                                 <Button
                                     className="btnCadastro"
-                                    type="submit">Fazer Cadastro
+                                    type="submit">Dados Pessoais
+                                </Button>
+                            </Link>
+
+                            
+                            <Link to={"/ListarFuncionarios"}>
+                                <Button
+                                    className="btnCadastro"
+                                    type="submit">Historico
                                 </Button>
                             </Link>
 
@@ -69,4 +77,4 @@ function Home() {
     )
 }
 
-export default Home;
+export default AcessarCadastro;

@@ -5,7 +5,7 @@ import RecuperarSenha from "./RecuperarSenha";
 import NovaSenha from "./NovaSenha";
 import ListarFuncionarios from "../components/ListaFuncionarios";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
-
+import AcessarCadastro from "./AcessarCadastro";
 
 
 function Routes() {
@@ -22,6 +22,7 @@ function Routes() {
         <Route path="/recuperarSenha" exact component={RecuperarSenha} />
         <Route path="/novaSenha" exact component={NovaSenha} />
         <Route path="/listarFuncionarios" exact component={ListarFuncionarios} />
+        <Route path="/acessarCadastro" exact component={AcessarCadastro}/>
       </Switch> 
       
     </BrowserRouter>

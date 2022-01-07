@@ -17,6 +17,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
 import api from "../../Services/api";
 
+
 const theme = createTheme();
 
 function Cadastro() {
@@ -734,12 +735,24 @@ function Cadastro() {
                           </Link>
                         </Grid>
                       </Grid>
+
+                      <Grid container justifyContent="flex-end" marginBottom="3%">
+                        <Grid item>
+                          <Link href="/home" variant="body2" >
+                            <h4>Voltar</h4>
+                          </Link>
+                        </Grid>
+                      </Grid>
+
+
                     </Grid>
-                 
+                  
+
                 </Box>
               </Box>
             </Container>
           </ThemeProvider>
+
         </div>
       </div>
     </div>
